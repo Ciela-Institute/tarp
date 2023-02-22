@@ -1,0 +1,39 @@
+[project]
+name = "blanket"
+version = "0.0.1"
+authors = [
+    {name = "Adam Coogan", email = "dr.adam.coogan@gmail.com"},
+    {name = "Pablo Lemos", email = "plemos91@gmail.com"}
+]
+description = "Statistical coverage testing in python."
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["bayesian", "coverage", "posterior", "statistics"]
+dependencies = ["jax", "jaxlib", "numpy", "torch"]
+
+[project.optional-dependencies]
+dev = [
+    "furo",
+    "myst-parser",
+    "pytest",
+    "sphinx-autodoc-typehints",
+    "sphinx",
+]
+
+[project.urls]
+homepage = "https://github.com/Ciela-Institute/blanket"
+repository = "https://github.com/Ciela-Institute/blanket"
+documentation = "https://blanket.readthedocs.io/en/latest/"
+
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
