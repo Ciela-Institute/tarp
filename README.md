@@ -3,6 +3,7 @@
 [![Documentation Status](https://readthedocs.org/projects/comforter/badge/?version=latest)](https://comforter.readthedocs.io/en/latest/?badge=latest)
 [![PyPI version](https://badge.fury.io/py/comforter.svg)](https://pypi.org/project/caustic/)
 [![Tests](https://github.com/Ciela-Institute/comforter/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/Ciela-Institute/comforter/actions)
+[![Coverage](https://img.shields.io/codecov/c/github/Ciela-Institute/comforter)](https://app.codecov.io/gh/Ciela-Institute/comforter)
 
 `comforter` is a small python package for performing statistical coverage tests
 to make you feel comfortable with the quality of your posterior estimators. `comforter`
