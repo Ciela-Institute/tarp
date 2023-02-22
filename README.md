@@ -1,5 +1,8 @@
 # comforter
 
+[![Documentation Status](https://readthedocs.org/projects/comforter/badge/?version=latest)](https://comforter.readthedocs.io/en/latest/?badge=latest)
+[![PyPI version](https://badge.fury.io/py/comforter.svg)](https://pypi.org/project/caustic/)
+
 `comforter` is a small python package for performing statistical coverage tests
 to make you feel comfortable with the quality of your posterior estimators. `comforter`
 is framework-agnostic: it works with posterior estimators and samplers written in
