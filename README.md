@@ -29,7 +29,7 @@ To start, follow the installation instructions, replacing the last line with
 pip install -e ".[dev]"
 ```
 This creates an editable install and installs the dev dependencies for generating
-the docs and running tests.
+docs, running tests and packaging for PyPI.
 
 Please use `isort` and `black` to format your code. Open up [issues](https://github.com/Ciela-Institute/blanket/issues)
 for bugs/missing features. Use pull requests for additions to the code. Write tests
