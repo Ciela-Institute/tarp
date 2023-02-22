@@ -1,5 +1,5 @@
 [project]
-name = "blanket"
+name = "comforter"
 version = "0.0.1a0"
 authors = [
     {name = "Adam Coogan", email = "dr.adam.coogan@gmail.com"},
@@ -36,9 +36,9 @@ dev = [
 ]
 
 [project.urls]
-homepage = "https://github.com/Ciela-Institute/blanket"
-repository = "https://github.com/Ciela-Institute/blanket"
-documentation = "https://blanket.readthedocs.io/en/latest/"
+homepage = "https://github.com/Ciela-Institute/comforter"
+repository = "https://github.com/Ciela-Institute/comforter"
+documentation = "https://comforter.readthedocs.io/en/latest/"
 
 [build-system]
 requires = [

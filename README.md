@@ -1,10 +1,10 @@
-# blanket
+# comforter
 
 A python package for performing statistical coverage tests to check the quality
-of posterior estimators. `blanket` is framework-agnostic: it works with posterior
+of posterior estimators. `comforter` is framework-agnostic: it works with posterior
 estimators and samplers written in numpy, pytorch, jax.
 
-`blanket` currently implements the distance to random point (DRP) test introduced
+`comforter` currently implements the distance to random point (DRP) test introduced
 in [Lemos, Coogan et al 2023](https://arxiv.org/abs/2302.03026), which relies on
 posterior samples.
 
@@ -12,13 +12,13 @@ posterior samples.
 
 ## Installation
 
-Soon you'll be able to install from PyPI with `pip install blanket`. For now,
+Soon you'll be able to install from PyPI with `pip install comforter`. For now,
 ```
-git clone git@github.com:Ciela-Institute/blanket.git
-cd blanket
+git clone git@github.com:Ciela-Institute/comforter.git
+cd comforter
 pip install .
 ```
-will install the `blanket` package.
+will install the `comforter` package.
 
 ## Contributing
 
@@ -31,6 +31,6 @@ pip install -e ".[dev]"
 This creates an editable install and installs the dev dependencies for generating
 docs, running tests and packaging for PyPI.
 
-Please use `isort` and `black` to format your code. Open up [issues](https://github.com/Ciela-Institute/blanket/issues)
+Please use `isort` and `black` to format your code. Open up [issues](https://github.com/Ciela-Institute/comforter/issues)
 for bugs/missing features. Use pull requests for additions to the code. Write tests
 that can be run by [`pytest`](https://docs.pytest.org/).

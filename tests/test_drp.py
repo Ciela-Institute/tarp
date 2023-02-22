@@ -1,4 +1,4 @@
-from blanket import get_drp_coverage
+from comforter import get_drp_coverage
 
 
 def test():
