@@ -34,21 +34,17 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pytest pytest-cov
-        cd $GITHUB_WORKSPACE/comforter
         pip install -r requirements.txt
       shell: bash
 
     - name: Install comforter
       run: |
-        cd $GITHUB_WORKSPACE
         pip install -e .
         pip show comforter
       shell: bash
 
     - name: Test with pytest
       run: |
-        cd $GITHUB_WORKSPACE
-        pwd
         pytest --cov-report=xml --cov=src/comforter tests/
         cat coverage.xml
       shell: bash
