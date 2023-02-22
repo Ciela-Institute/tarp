@@ -1,9 +1,9 @@
 [project]
 name = "blanket"
-version = "0.0.1"
+version = "0.0.1a0"
 authors = [
     {name = "Adam Coogan", email = "dr.adam.coogan@gmail.com"},
-    {name = "Pablo Lemos", email = "plemos91@gmail.com"}
+    {name = "Pablo Lemos", email = "plemos91@gmail.com"},
 ]
 description = "Statistical coverage testing in python."
 readme = "README.md"
@@ -15,15 +15,24 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 keywords = ["bayesian", "coverage", "posterior", "statistics"]
-dependencies = ["jax", "jaxlib", "numpy", "torch"]
+dependencies = [
+    "jax",
+    "jaxlib",
+    "numpy",
+    "torch",
+]
 
 [project.optional-dependencies]
 dev = [
+    "build",
     "furo",
     "myst-parser",
+    "pip",
     "pytest",
-    "sphinx-autodoc-typehints",
     "sphinx",
+    "sphinx-autodoc-typehints",
+    "sphinx-pyproject",
+    "twine",
 ]
 
 [project.urls]

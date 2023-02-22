@@ -11,16 +11,18 @@
 #
 import os
 import sys
+from sphinx_pyproject import SphinxConfig
 
 sys.path.insert(0, os.path.abspath(os.path.join("..", "..", "src")))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "blanket"
+# Put pyproject.toml info into globals
+config = SphinxConfig("../../pyproject.toml", globalns=globals())
+project = name  # type: ignore
+release = version  # type: ignore
 copyright = "2023, Adam Coogan & Pablo Lemos"
-author = "Adam Coogan & Pablo Lemos"
-release = "0.0.1"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
