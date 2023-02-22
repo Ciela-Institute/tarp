@@ -1,8 +1,9 @@
 # comforter
 
-A python package for performing statistical coverage tests to check the quality
-of posterior estimators. `comforter` is framework-agnostic: it works with posterior
-estimators and samplers written in numpy, pytorch, jax.
+`comforter` is a small python package for performing statistical coverage tests
+to make you feel comfortable with the quality of your posterior estimators. `comforter`
+is framework-agnostic: it works with posterior estimators and samplers written in
+numpy, pytorch, jax.
 
 `comforter` currently implements the distance to random point (DRP) test introduced
 in [Lemos, Coogan et al 2023](https://arxiv.org/abs/2302.03026), which relies on
