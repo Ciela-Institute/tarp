@@ -1,5 +1,5 @@
 [project]
-name = "comforter"
+name = "tarp"
 version = "0.0.1a0"
 authors = [
     {name = "Adam Coogan", email = "dr.adam.coogan@gmail.com"},
@@ -36,9 +36,9 @@ dev = [
 ]
 
 [project.urls]
-homepage = "https://github.com/Ciela-Institute/comforter"
-repository = "https://github.com/Ciela-Institute/comforter"
-documentation = "https://comforter.readthedocs.io/en/latest/"
+homepage = "https://github.com/Ciela-Institute/tarp"
+repository = "https://github.com/Ciela-Institute/tarp"
+documentation = "https://tarp.readthedocs.io/en/latest/"
 
 [build-system]
 requires = [

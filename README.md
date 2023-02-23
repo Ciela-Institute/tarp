@@ -1,16 +1,15 @@
-# comforter
+# tarp
 
-[![Documentation Status](https://readthedocs.org/projects/comforter/badge/?version=latest)](https://comforter.readthedocs.io/en/latest/?badge=latest)
-[![PyPI version](https://badge.fury.io/py/comforter.svg)](https://pypi.org/project/caustic/)
-[![Tests](https://github.com/Ciela-Institute/comforter/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/Ciela-Institute/comforter/actions)
-[![Coverage](https://img.shields.io/codecov/c/github/Ciela-Institute/comforter)](https://app.codecov.io/gh/Ciela-Institute/comforter)
+[![Documentation Status](https://readthedocs.org/projects/tarp/badge/?version=latest)](https://tarp.readthedocs.io/en/latest/?badge=latest)
+[![PyPI version](https://badge.fury.io/py/tarp.svg)](https://pypi.org/project/caustic/)
+[![Tests](https://github.com/Ciela-Institute/tarp/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/Ciela-Institute/tarp/actions)
+[![Coverage](https://img.shields.io/codecov/c/github/Ciela-Institute/tarp)](https://app.codecov.io/gh/Ciela-Institute/tarp)
 
-`comforter` is a small python package for performing statistical coverage tests
-to make you feel comfortable with the quality of your posterior estimators. `comforter`
-is framework-agnostic: it works with posterior estimators and samplers written in
-numpy, pytorch, jax.
+`tarp` is a small python package for performing statistical coverage tests to assess
+the quality of posterior estimators. `tarp` is framework-agnostic: it works with
+posterior estimators and samplers written in numpy, pytorch, jax.
 
-`comforter` currently implements the distance to random point (DRP) test introduced
+`tarp` currently implements the distance to random point (DRP) test introduced
 in [Lemos, Coogan et al 2023](https://arxiv.org/abs/2302.03026), which relies on
 posterior samples.
 
@@ -18,13 +17,13 @@ posterior samples.
 
 ## Installation
 
-Soon you'll be able to install from PyPI with `pip install comforter`. For now,
+Soon you'll be able to install from PyPI with `pip install tarp`. For now,
 ```
-git clone git@github.com:Ciela-Institute/comforter.git
-cd comforter
+git clone git@github.com:Ciela-Institute/tarp.git
+cd tarp
 pip install .
 ```
-will install the `comforter` package.
+will install the `tarp` package.
 
 ## Contributing
 
@@ -37,6 +36,6 @@ pip install -e ".[dev]"
 This creates an editable install and installs the dev dependencies for generating
 docs, running tests and packaging for PyPI.
 
-Please use `isort` and `black` to format your code. Open up [issues](https://github.com/Ciela-Institute/comforter/issues)
+Please use `isort` and `black` to format your code. Open up [issues](https://github.com/Ciela-Institute/tarp/issues)
 for bugs/missing features. Use pull requests for additions to the code. Write tests
 that can be run by [`pytest`](https://docs.pytest.org/).
