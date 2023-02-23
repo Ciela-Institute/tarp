@@ -1,7 +1,7 @@
 # tarp
 
 [![Documentation Status](https://readthedocs.org/projects/tarp/badge/?version=latest)](https://tarp.readthedocs.io/en/latest/?badge=latest)
-[![PyPI version](https://badge.fury.io/py/tarp.svg)](https://pypi.org/project/targ/)
+[![PyPI version](https://badge.fury.io/py/tarp.svg)](https://pypi.org/project/tarp/)
 [![Tests](https://github.com/Ciela-Institute/tarp/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/Ciela-Institute/tarp/actions)
 [![Coverage](https://img.shields.io/codecov/c/github/Ciela-Institute/tarp)](https://app.codecov.io/gh/Ciela-Institute/tarp)
 
