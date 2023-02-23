@@ -22,7 +22,7 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - name: Checkout comforter
+    - name: Checkout tarp
       uses: actions/checkout@v3
 
     - name: Set up Python ${{ matrix.python-version }}
@@ -37,7 +37,7 @@ jobs:
         pip install -r requirements.txt
       shell: bash
 
-    - name: Install comforter
+    - name: Install tarp
       run: |
         pip install .
       shell: bash

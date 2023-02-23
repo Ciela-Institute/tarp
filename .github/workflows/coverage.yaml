@@ -13,7 +13,7 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout comforter
+    - name: Checkout tarp
       uses: actions/checkout@v3
 
     - name: Set up Python 3.10
@@ -37,15 +37,15 @@ jobs:
         pip install -r requirements.txt
       shell: bash
 
-    - name: Install comforter
+    - name: Install tarp
       run: |
         pip install -e .
-        pip show comforter
+        pip show tarp
       shell: bash
 
     - name: Test with pytest
       run: |
-        pytest --cov-report=xml --cov=src/comforter tests/
+        pytest --cov-report=xml --cov=src/tarp tests/
         cat coverage.xml
       shell: bash
 
