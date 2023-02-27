@@ -4,7 +4,7 @@ import numpy as np
 __all__ = ("get_drp_coverage",)
 
 
-def get_drp_coverage(xs, thetas, sample_ref, metric: Callable[[Any, Any], Any]):
+def get_drp_coverage(samples, theta, references='random', metric='euclidean'):
     """
     Estimates coverage with the distance to random point method.
 
