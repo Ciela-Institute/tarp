@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Union
 
 import numpy as np
 
@@ -8,7 +8,7 @@ __all__ = ("get_drp_coverage",)
 def get_drp_coverage(
     samples: np.ndarray,
     theta: np.ndarray,
-    references: str | np.ndarray = "random",
+    references: Union[str, np.ndarray] = "random",
     metric: str = "euclidean",
 ) -> Tuple[np.ndarray, np.ndarray]:
     """
