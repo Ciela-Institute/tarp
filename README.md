@@ -6,8 +6,8 @@
 [![Coverage](https://img.shields.io/codecov/c/github/Ciela-Institute/tarp)](https://app.codecov.io/gh/Ciela-Institute/tarp)
 
 `tarp` is a small python package for performing statistical coverage tests to assess
-the quality of posterior estimators. `tarp` is framework-agnostic: it works with
-posterior estimators and samplers written in numpy, pytorch, jax.
+the quality of posterior estimators.
+<!-- `tarp` is framework-agnostic: it works with posterior estimators and samplers written in numpy, pytorch, jax. -->
 
 `tarp` currently implements the distance to random point (DRP) test introduced
 in [Lemos, Coogan et al 2023](https://arxiv.org/abs/2302.03026), which relies on
@@ -17,13 +17,7 @@ posterior samples.
 
 ## Installation
 
-Soon you'll be able to install from PyPI with `pip install tarp`. For now,
-```
-git clone git@github.com:Ciela-Institute/tarp.git
-cd tarp
-pip install .
-```
-will install the `tarp` package.
+`pip install tarp`
 
 ## Contributing
 
