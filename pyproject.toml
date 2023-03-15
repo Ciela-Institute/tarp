@@ -1,6 +1,6 @@
 [project]
 name = "tarp"
-version = "0.0.1a0"
+version = "0.0.1"
 authors = [
     {name = "Adam Coogan", email = "dr.adam.coogan@gmail.com"},
     {name = "Pablo Lemos", email = "plemos91@gmail.com"},
@@ -16,10 +16,10 @@ classifiers = [
 ]
 keywords = ["bayesian", "coverage", "posterior", "statistics"]
 dependencies = [
-    "jax",
-    "jaxlib",
+    # "jax",
+    # "jaxlib",
     "numpy",
-    "torch",
+    # "torch",
 ]
 
 [project.optional-dependencies]
