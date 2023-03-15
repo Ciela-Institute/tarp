@@ -41,15 +41,11 @@ def generate_correlated_samples(num_samples, num_sims, num_dims):
     theta = np.random.uniform(low=-5, high=5, size=(num_sims, num_dims))
     cov = [generate_psd_matrix(num_dims) for _ in range(num_sims)]
     cov = np.concatenate(cov).reshape(num_sims, num_dims, num_dims)
-    print(theta.shape, cov.shape)
     samples = [np.random.multivariate_normal(mean=theta[i], cov=cov[i], size=num_samples) for i in range(num_sims)]
     samples = np.stack(samples)
     samples = samples.transpose(1, 0, 2)
-    #samples = np.random.multivariate_normal(mean=theta, cov=cov, size=(num_samples, num_sims, num_dims))
     theta = [np.random.multivariate_normal(mean=theta[i], cov=cov[i], size=1) for i in range(num_sims)]
     theta = np.stack(theta)[:,0]
-    print(theta.shape, samples.shape)
-    #theta = np.random.multivariate_normal(mean=theta, cov=cov, size=(num_sims, num_dims))
     return samples, theta
 
 
