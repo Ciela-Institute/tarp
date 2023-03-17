@@ -78,7 +78,7 @@ def main():
     ax.set_ylabel("Expected Coverage")
     ax.set_xlabel("Credibility Level")
     plt.subplots_adjust(left = 0.15, bottom = 0.15)
-    plt.savefig("/Users/pablo/Desktop/references.pdf")
+    plt.savefig("/Users/pablo/Desktop/prior_references.pdf")
 
 
 if __name__ == '__main__':
