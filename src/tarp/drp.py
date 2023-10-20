@@ -194,7 +194,8 @@ def get_drp_coverage(
     return ecp, alpha[1:]
 
 def bootstrapping(samples, theta, references = "random", metric = "euclidean", norm = True):
-    """Estimates uncertainties on the expected probability and credibility values calculated with the get_drp_coverage function
+    """
+    Estimates uncertainties on the expected probability and credibility values calculated with the get_drp_coverage function
     using the bootstrapping method
 
     Args:
