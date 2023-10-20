@@ -2,7 +2,7 @@ from typing import Tuple, Union
 
 import numpy as np
 from tqdm import tqdm
-from fast_histogram import histogram1d
+
 
 __all__ = ("get_drp_coverage",)
 
