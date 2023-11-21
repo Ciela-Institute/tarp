@@ -120,7 +120,7 @@ def _get_tarp_coverage_single(
     h, alpha = np.histogram(f, density=True, bins=num_sims // 10)
     dx = alpha[1] - alpha[0]
     ecp = np.cumsum(h) * dx
-    return ecp, alpha[1:]
+    return np.concatenate([[0], ecp]), alpha
 
 
 def _get_tarp_coverage_bootstrap(samples: np.ndarray,
