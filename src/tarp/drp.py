@@ -135,6 +135,7 @@ def _get_tarp_coverage_bootstrap(samples: np.ndarray,
     references: Union[str, np.ndarray] = "random",
     metric: str = "euclidean",
     num_alpha_bins: Union[int, None] = None,
+    num_bootstrap: int = 100,
     norm: bool = True,
     seed: Union[int, None] = None
 ) -> Tuple[np.ndarray, np.ndarray]:
@@ -153,6 +154,7 @@ def _get_tarp_coverage_bootstrap(samples: np.ndarray,
             ``"manhattan"``.
         num_alpha_bins: number of bins to use for the credibility values. If ``None``, then
             ``n_sims // 10`` bins are used.
+        num_bootstrap: number of bootstrap iterations to perform (Default = 100)
         norm : whether to apply or not the normalization (Default = True)
         seed: the seed to use for the random number generator. If ``None``, then no seed
 
@@ -164,8 +166,8 @@ def _get_tarp_coverage_bootstrap(samples: np.ndarray,
     if num_alpha_bins is None:
         num_alpha_bins = num_sims // 10
 
-    boot_ecp = np.empty(shape=(num_sims, num_alpha_bins+1))
-    for i in tqdm(range(num_sims)):
+    boot_ecp = np.empty(shape=(num_bootstrap, num_alpha_bins+1))
+    for i in tqdm(range(num_bootstrap)):
         idx_remove = np.random.randint(num_sims)
         idx_add = np.random.randint(num_sims)
 
@@ -194,6 +196,7 @@ def get_tarp_coverage(
     references: Union[str, np.ndarray] = "random",
     metric: str = "euclidean",
     num_alpha_bins: Union[int, None] = None,
+    num_bootstrap: int = 100,
     norm: bool = False,
     bootstrap: bool = False,
     seed: Union[int, None] = None
@@ -214,6 +217,7 @@ def get_tarp_coverage(
             ``"manhattan"``.
         num_alpha_bins: number of bins to use for the credibility values. If ``None``, then
             ``n_sims // 10`` bins are used.
+        num_bootstrap: number of bootstrap iterations to perform (Default = 100)
         norm : whether to apply or not the normalization (Default = False)
         bootstrap : whether to use bootstrap to estimate uncertainties (Default = False)
         seed: the seed to use for the random number generator. If ``None``, then no seed
@@ -223,7 +227,8 @@ def get_tarp_coverage(
         If bootstrap is True, the ecp array has an extra dimension corresponding to the number of bootstrap iterations
     """
     if bootstrap:
-        ecp, alpha = _get_tarp_coverage_bootstrap(samples, theta, references, metric, num_alpha_bins, norm, seed)
+        ecp, alpha = _get_tarp_coverage_bootstrap(samples, theta, references, metric, num_alpha_bins, num_bootstrap,
+                                                  norm, seed)
     else:
         ecp, alpha = _get_tarp_coverage_single(samples, theta, references, metric, num_alpha_bins, norm, seed)
     return ecp, alpha
