@@ -147,12 +147,11 @@ def _get_tarp_coverage_bootstrap(samples: np.ndarray,
         seed: the seed to use for the random number generator. If ``None``, then no seed
 
     Returns:
-        Mean and std of the expected coverage probability, and mean of the credibility
+        Expected coverage probability, and credibility
     """
     num_sims = samples.shape[1]
 
     boot_ecp = np.empty(shape=(num_sims, num_sims//10))
-    boot_alpha = np.empty(shape=(num_sims, num_sims//10))
     for i in tqdm(range(num_sims)):
         idx_remove = np.random.randint(num_sims)
         idx_add = np.random.randint(num_sims)
@@ -161,18 +160,18 @@ def _get_tarp_coverage_bootstrap(samples: np.ndarray,
         samples[:, idx_remove, :] = samples[:, idx_add, :] 
         theta[idx_remove, :] = theta[idx_add, :]
 
-        boot_ecp[i, :], boot_alpha[i, :] = _get_tarp_coverage_single(samples,
-                                                                     theta,
-                                                                     references=references,
-                                                                     metric=metric,
-                                                                     norm=norm,
-                                                                     seed=seed)
+        boot_ecp[i, :], alpha = _get_tarp_coverage_single(samples,
+                                                          theta,
+                                                          references=references,
+                                                          metric=metric,
+                                                          norm=norm,
+                                                          seed=seed)
     
     # ecp_mean = boot_ecp.mean(axis=0)
     # ecp_std = boot_ecp.std(axis=0)
     # alpha_mean = boot_alpha.mean(axis=0)
     # return ecp_mean, ecp_std, alpha_mean
-    return boot_ecp, boot_alpha
+    return boot_ecp, alpha
 
 
 def get_tarp_coverage(
@@ -204,7 +203,7 @@ def get_tarp_coverage(
 
     Returns:
         Expected coverage probability (``ecp``) and credibility values (``alpha``).
-        If bootstrap is True, both arrays have an extra dimension corresponding to the number of bootstrap iterations
+        If bootstrap is True, the ecp array has an extra dimension corresponding to the number of bootstrap iterations
     """
     if bootstrap:
         ecp, alpha = _get_tarp_coverage_bootstrap(samples, theta, references, metric, norm, seed)
