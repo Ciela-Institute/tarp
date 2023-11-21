@@ -23,6 +23,7 @@ def get_drp_coverage(
                              theta=theta,
                              references=references,
                              metric=metric,
+                             num_alpha_bins=None,
                              norm=True,
                              bootstrap=False,
                              seed=None)
@@ -33,6 +34,7 @@ def _get_tarp_coverage_single(
     theta: np.ndarray,
     references: Union[str, np.ndarray] = "random",
     metric: str = "euclidean",
+    num_alpha_bins: Union[int, None] = None,
     norm: bool = True,
     seed: Union[int, None] = None
 ) -> Tuple[np.ndarray, np.ndarray]:
@@ -51,6 +53,8 @@ def _get_tarp_coverage_single(
         metric: the metric to use when computing the distance. Can be ``"euclidean"`` or
             ``"manhattan"``.
         norm : whether to apply or not the normalization (Default = True)
+        num_alpha_bins: number of bins to use for the credibility values. If ``None``, then
+            ``n_sims // 10`` bins are used.
         seed: the seed to use for the random number generator. If ``None``, then no seed
 
     Returns:
@@ -68,6 +72,9 @@ def _get_tarp_coverage_single(
     num_samples = samples.shape[0]
     num_sims = samples.shape[1]
     num_dims = samples.shape[2]
+
+    if num_alpha_bins is None:
+        num_alpha_bins = num_sims // 10
 
     if theta.shape[0] != num_sims:
         raise ValueError("theta must have the same number of rows as samples")
@@ -117,16 +124,18 @@ def _get_tarp_coverage_single(
     f = np.sum((samples_distances < theta_distances), axis=0) / num_samples
 
     # Compute expected coverage
-    h, alpha = np.histogram(f, density=True, bins=num_sims // 10)
+    h, alpha = np.histogram(f, density=True, bins=num_alpha_bins)
     dx = alpha[1] - alpha[0]
     ecp = np.cumsum(h) * dx
-    return ecp, alpha[1:]
+    return np.concatenate([[0], ecp]), alpha
 
 
 def _get_tarp_coverage_bootstrap(samples: np.ndarray,
     theta: np.ndarray,
     references: Union[str, np.ndarray] = "random",
     metric: str = "euclidean",
+    num_alpha_bins: Union[int, None] = None,
+    num_bootstrap: int = 100,
     norm: bool = True,
     seed: Union[int, None] = None
 ) -> Tuple[np.ndarray, np.ndarray]:
@@ -143,6 +152,9 @@ def _get_tarp_coverage_bootstrap(samples: np.ndarray,
             the parameter space.
         metric: the metric to use when computing the distance. Can be ``"euclidean"`` or
             ``"manhattan"``.
+        num_alpha_bins: number of bins to use for the credibility values. If ``None``, then
+            ``n_sims // 10`` bins are used.
+        num_bootstrap: number of bootstrap iterations to perform (Default = 100)
         norm : whether to apply or not the normalization (Default = True)
         seed: the seed to use for the random number generator. If ``None``, then no seed
 
@@ -151,8 +163,11 @@ def _get_tarp_coverage_bootstrap(samples: np.ndarray,
     """
     num_sims = samples.shape[1]
 
-    boot_ecp = np.empty(shape=(num_sims, num_sims//10))
-    for i in tqdm(range(num_sims)):
+    if num_alpha_bins is None:
+        num_alpha_bins = num_sims // 10
+
+    boot_ecp = np.empty(shape=(num_bootstrap, num_alpha_bins+1))
+    for i in tqdm(range(num_bootstrap)):
         idx_remove = np.random.randint(num_sims)
         idx_add = np.random.randint(num_sims)
 
@@ -164,6 +179,7 @@ def _get_tarp_coverage_bootstrap(samples: np.ndarray,
                                                           theta,
                                                           references=references,
                                                           metric=metric,
+                                                          num_alpha_bins=num_alpha_bins,
                                                           norm=norm,
                                                           seed=seed)
     
@@ -179,6 +195,8 @@ def get_tarp_coverage(
     theta: np.ndarray,
     references: Union[str, np.ndarray] = "random",
     metric: str = "euclidean",
+    num_alpha_bins: Union[int, None] = None,
+    num_bootstrap: int = 100,
     norm: bool = False,
     bootstrap: bool = False,
     seed: Union[int, None] = None
@@ -197,6 +215,9 @@ def get_tarp_coverage(
             the parameter space.
         metric: the metric to use when computing the distance. Can be ``"euclidean"`` or
             ``"manhattan"``.
+        num_alpha_bins: number of bins to use for the credibility values. If ``None``, then
+            ``n_sims // 10`` bins are used.
+        num_bootstrap: number of bootstrap iterations to perform (Default = 100)
         norm : whether to apply or not the normalization (Default = False)
         bootstrap : whether to use bootstrap to estimate uncertainties (Default = False)
         seed: the seed to use for the random number generator. If ``None``, then no seed
@@ -206,8 +227,9 @@ def get_tarp_coverage(
         If bootstrap is True, the ecp array has an extra dimension corresponding to the number of bootstrap iterations
     """
     if bootstrap:
-        ecp, alpha = _get_tarp_coverage_bootstrap(samples, theta, references, metric, norm, seed)
+        ecp, alpha = _get_tarp_coverage_bootstrap(samples, theta, references, metric, num_alpha_bins, num_bootstrap,
+                                                  norm, seed)
     else:
-        ecp, alpha = _get_tarp_coverage_single(samples, theta, references, metric, norm, seed)
+        ecp, alpha = _get_tarp_coverage_single(samples, theta, references, metric, num_alpha_bins, norm, seed)
     return ecp, alpha
 
