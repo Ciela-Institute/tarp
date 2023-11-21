@@ -48,7 +48,6 @@ class TarpTest(unittest.TestCase):
                                        bootstrap=True)
         ecp_mean = np.mean(ecp, axis=0)
         ecp_std = np.std(ecp, axis=0)
-        alpha = np.mean(alpha, axis=0)
         self.assertAlmostEqual(np.max(np.abs(ecp_mean - alpha)/ecp_std), 0., delta=10.)
 
 
