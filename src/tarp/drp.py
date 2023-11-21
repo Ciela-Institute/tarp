@@ -1,13 +1,18 @@
 from typing import Tuple, Union
 import numpy as np
 from tqdm import tqdm
-from warnings import deprecated
+import deprecation
 
 
-__all__ = ("get_drp_coverage",)
+__all__ = ("get_tarp_coverage", "get_drp_coverage")
 
 
-@deprecated("get_drp_coverage", "get_tarp_coverage")
+@deprecation.deprecated(
+    deprecated_in="0.1.0",
+    removed_in="0.2.0",
+    current_version="0.1.0",
+    details="Use get_tarp_coverage instead",
+)
 def get_drp_coverage(
     samples: np.ndarray,
     theta: np.ndarray,
