@@ -1,6 +1,6 @@
 [project]
 name = "tarp"
-version = "0.0.2"
+version = "0.1.0"
 authors = [
     {name = "Adam Coogan", email = "dr.adam.coogan@gmail.com"},
     {name = "Pablo Lemos", email = "plemos91@gmail.com"},

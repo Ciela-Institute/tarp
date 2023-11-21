@@ -7,3 +7,5 @@ Sphinx==5.3.0
 sphinx_autodoc_typehints==1.22
 sphinx-pyproject==0.1.0
 torch==1.13.1
+tqdm==4.65.0
+deprecation==2.1.0
