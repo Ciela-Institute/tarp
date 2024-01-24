@@ -3,7 +3,7 @@ from typing import Tuple, Union
 import numpy as np
 from scipy.stats import chi2_contingency
 
-__all__ = ("get_tarp_coverage", "get_drp_coverage")
+__all__ = "get_tarppp_chi2"
 
 
 def get_tarppp_chi2(x_samples, y_samples, num_refs=100):
