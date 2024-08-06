@@ -1,10 +1,11 @@
 [project]
-name = "tarppp"
-version = "0.0.1"
+name = "tarp"
+version = "0.1.2"
 authors = [
+    {name = "Adam Coogan", email = "dr.adam.coogan@gmail.com"},
     {name = "Pablo Lemos", email = "plemos91@gmail.com"},
 ]
-description = "Tarp ++"
+description = "Statistical coverage testing in python."
 readme = "README.md"
 license = { file="LICENSE" }
 requires-python = ">=3.7"
@@ -30,7 +31,9 @@ dev = [
 ]
 
 [project.urls]
-repository = "https://github.com/Pablo-Lemos/tarppp"
+homepage = "https://github.com/Ciela-Institute/tarp"
+repository = "https://github.com/Ciela-Institute/tarp"
+documentation = "https://tarp.readthedocs.io/en/latest/"
 
 [build-system]
 requires = [
