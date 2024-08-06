@@ -124,7 +124,7 @@ def _get_tarp_coverage_single(
     f = np.sum((samples_distances < theta_distances), axis=0) / num_samples
 
     # Compute expected coverage
-    h, alpha = np.histogram(f, density=True, bins=num_alpha_bins)
+    h, alpha = np.histogram(f, density=True, bins=num_alpha_bins, range=(0,1))
     dx = alpha[1] - alpha[0]
     ecp = np.cumsum(h) * dx
     return np.concatenate([[0], ecp]), alpha
@@ -168,15 +168,14 @@ def _get_tarp_coverage_bootstrap(samples: np.ndarray,
 
     boot_ecp = np.empty(shape=(num_bootstrap, num_alpha_bins+1))
     for i in tqdm(range(num_bootstrap)):
-        idx_remove = np.random.randint(num_sims)
-        idx_add = np.random.randint(num_sims)
+        idx = np.random.randint(low=0, high=num_sims, size=num_sims)
+        
+        # Sample with replacement from the full set of simulations
+        boot_samples = samples[:, idx, :]
+        boot_theta = theta[idx, :]
 
-        # Replacing one simulation and its samples by another and its associated samples
-        samples[:, idx_remove, :] = samples[:, idx_add, :] 
-        theta[idx_remove, :] = theta[idx_add, :]
-
-        boot_ecp[i, :], alpha = _get_tarp_coverage_single(samples,
-                                                          theta,
+        boot_ecp[i, :], alpha = _get_tarp_coverage_single(boot_samples,
+                                                          boot_theta,
                                                           references=references,
                                                           metric=metric,
                                                           num_alpha_bins=num_alpha_bins,
