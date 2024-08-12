@@ -1,6 +1,6 @@
 [project]
 name = "tarppp"
-version = "0.0.1"
+version = "0.1.3"
 authors = [
     {name = "Pablo Lemos", email = "plemos91@gmail.com"},
 ]
