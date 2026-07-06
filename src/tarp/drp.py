@@ -47,7 +47,7 @@ def _get_tarp_coverage_single(
         samples: the samples to compute the coverage of, with shape ``(n_samples, n_sims, n_dims)``.
         theta: the true parameter values for each samples, with shape ``(n_sims, n_dims)``.
         references: the reference points to use for the DRP regions, with shape
-            ``(n_references, n_sims)``, or the string ``"random"``. If the later, then
+            ``(n_references, n_sims)``, or the string ``"random"``. If ``"random"`` is provided, then
             the reference points are chosen randomly from the unit hypercube over
             the parameter space.
         metric: the metric to use when computing the distance. Can be ``"euclidean"`` or
